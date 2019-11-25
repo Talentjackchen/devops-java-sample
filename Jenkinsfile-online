@@ -75,12 +75,12 @@ pipeline {
            }
         }
 
-        stage('deploy to dev') {
+        stage('deploy to paas-kubesphere-sample-dev') {
           when{
             branch 'master'
           }
           steps {
-            input(id: 'deploy-to-dev', message: 'deploy to dev?')
+            input(id: 'deploy-to-dev', message: 'deploy to paas-kubesphere-sample-dev?')
             kubernetesDeploy(configs: 'deploy/dev-ol/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
           }
         }
